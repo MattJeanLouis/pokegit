@@ -264,13 +264,109 @@ export function getAvailableZones(repoCount: number, badges: boolean[] = []): Zo
   return zones
 }
 
+// ── Tables d'apparition par zone (style FireRed) ──────────────────────────
+// Chaque entrée : { id, rate (%) }  — la somme doit faire 100
+interface EncounterEntry { id: number; rate: number }
+
+const ZONE_ENCOUNTERS: Record<number, EncounterEntry[]> = {
+  // Zone 1 – Route 1 (Kanto débutant)
+  1: [
+    { id: 19, rate: 30 }, // Rattata     ████████████
+    { id: 16, rate: 27 }, // Pidgey      ███████████
+    { id: 10, rate: 13 }, // Chenipan    █████
+    { id: 13, rate: 13 }, // Aspicot     █████
+    { id: 23, rate:  7 }, // Abo         ██
+    { id: 25, rate:  5 }, // Pikachu ⚡   ██
+    { id: 35, rate:  3 }, // Mélofée     █
+    { id: 39, rate:  2 }, // Rondoudou   ░
+  ],
+  // Zone 2 – Mt. Code (Grottes)
+  2: [
+    { id: 74, rate: 25 }, // Racaillou   █████████
+    { id: 41, rate: 25 }, // Nosferapti  █████████
+    { id: 66, rate: 15 }, // Machoc      █████
+    { id: 79, rate: 10 }, // Ramoloss    ███
+    { id: 81, rate: 10 }, // Magneti     ███
+    { id: 92, rate:  8 }, // Fantominus  ██
+    { id: 63, rate:  5 }, // Abra        █
+    { id: 143, rate: 2 }, // Ronflex     ░ (rare!)
+  ],
+  // Zone 3 – Route Victoire (Gen 2)
+  3: [
+    { id: 161, rate: 22 }, // Fouinette
+    { id: 163, rate: 20 }, // Hoothoot
+    { id: 167, rate: 15 }, // Feuforêve
+    { id: 183, rate: 13 }, // Marill
+    { id: 194, rate: 10 }, // Axoloto
+    { id: 209, rate:  8 }, // Snubbull
+    { id: 214, rate:  7 }, // Scarhino
+    { id: 246, rate:  5 }, // Embrylex 🐉  ░ (rare!)
+  ],
+  // Zone 4 – Forêt Obscure (Gen 3)
+  4: [
+    { id: 263, rate: 20 }, // Zigzaton
+    { id: 265, rate: 15 }, // Cheniti
+    { id: 280, rate: 15 }, // Tarsal
+    { id: 285, rate: 10 }, // Balignon
+    { id: 304, rate: 10 }, // Steuby
+    { id: 270, rate:  8 }, // Lombre
+    { id: 328, rate:  8 }, // Trapinch
+    { id: 371, rate:  7 }, // Draby 🐉
+    { id: 374, rate:  5 }, // Terhal 🤖 (rare!)
+    { id: 350, rate:  2 }, // Milobellus (très rare!)
+  ],
+  // Zone 5 – Île Écarlate (Gen 4)
+  5: [
+    { id: 396, rate: 22 }, // Étourmi
+    { id: 403, rate: 20 }, // Lixy ⚡
+    { id: 406, rate: 15 }, // Rozbouton
+    { id: 418, rate: 12 }, // Flozelle
+    { id: 425, rate: 10 }, // Driftlon
+    { id: 443, rate:  8 }, // Griknot 🐉
+    { id: 447, rate:  8 }, // Riolu ⚡ (rare!)
+    { id: 479, rate:  5 }, // Motisma ⚡ (rare!)
+  ],
+  // Zone 6 – Sanctuaire (Gen 5 + légendaires)
+  6: [
+    { id: 504, rate: 18 }, // Ratentif
+    { id: 506, rate: 18 }, // Ponchiot
+    { id: 519, rate: 15 }, // Poichigeon
+    { id: 522, rate: 12 }, // Zébibron ⚡
+    { id: 529, rate: 10 }, // Rapitaupe
+    { id: 610, rate:  8 }, // Axew 🐉
+    { id: 633, rate:  7 }, // Vrombi 🐉
+    { id: 595, rate:  5 }, // Surchoupi ⚡
+    { id: 643, rate:  4 }, // Reshiram 🔥 (légendaire!)
+    { id: 644, rate:  3 }, // Zekrom ⚡ (légendaire!)
+  ],
+}
+
+// Sélection pondérée selon les taux d'apparition
+function pickEncounterId(zone: Zone): number {
+  const entries = ZONE_ENCOUNTERS[zone] ?? ZONE_ENCOUNTERS[1]
+  const roll = Math.random() * 100
+  let cumulative = 0
+  for (const entry of entries) {
+    cumulative += entry.rate
+    if (roll < cumulative) return entry.id
+  }
+  return entries[entries.length - 1].id
+}
+
+// Plages de niveau par zone
+const ZONE_LEVEL_RANGE: Record<number, [number, number]> = {
+  1: [2, 12],
+  2: [8, 22],
+  3: [15, 32],
+  4: [25, 42],
+  5: [35, 52],
+  6: [45, 65],
+}
+
 export async function generateWildPokemon(zone: Zone, starsBonus: number): Promise<WildPokemon> {
-  const zoneInfo = ZONE_INFO.find(z => z.id === zone)!
-  const [minId, maxId] = zoneInfo.idRange
-  const id = Math.floor(Math.random() * (maxId - minId + 1)) + minId
-  const level = zone === 1 ? Math.floor(Math.random() * 10) + 2
-    : zone === 2 ? Math.floor(Math.random() * 15) + 10
-    : Math.floor(Math.random() * 20) + 20
+  const id = pickEncounterId(zone)
+  const [minLevel, maxLevel] = ZONE_LEVEL_RANGE[zone] ?? [2, 12]
+  const level = Math.floor(Math.random() * (maxLevel - minLevel + 1)) + minLevel
 
   const pokemonData = await fetchPokemon(id)
   const maxHp = level * 5 + 20

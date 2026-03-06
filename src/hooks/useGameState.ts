@@ -3,7 +3,6 @@ import type { GameState, GameAction, Zone, BallType, PotionType } from '../types
 import {
   MOCK_GITHUB,
   computePlayerStats,
-  getZoneForPlayer,
   generateWildPokemon,
   calculateDamage,
   calculateCatchSuccess,
@@ -30,7 +29,7 @@ const INITIAL_STATE: GameState = {
   },
   team: [],
   pc: [],
-  currentZone: getZoneForPlayer(MOCK_GITHUB.repoCount),
+  currentZone: 1,
   wildPokemon: null,
   battleState: 'idle',
   log: [
