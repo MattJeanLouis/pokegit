@@ -308,10 +308,16 @@ img {
   border: 3px dashed #888;
 }
 
-/* Tab navigation */
+/* Tab navigation — ancré en bas, toujours visible */
 .tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
   background-color: var(--text-dark);
   border-top: 3px solid #000;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .tab-btn {
@@ -334,8 +340,11 @@ img {
   margin-top: -3px;
 }
 
-/* Header */
+/* Header — ancré en haut */
 .game-header {
+  position: sticky;
+  top: 0;
+  z-index: 80;
   background-color: var(--text-dark);
   color: var(--white);
   padding: 8px 12px;

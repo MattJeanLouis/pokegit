@@ -99,8 +99,8 @@ export default function App() {
         </div>
       </div>
 
-      {/* Main content area */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
+      {/* Main content area — padding-bottom pour ne pas passer sous la tab bar fixe */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflowY: 'auto', paddingBottom: '62px' }}>
         {activeTab === 'battle' && (
           <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
             <BattleArena state={state} attackFlash={attackFlash} />
