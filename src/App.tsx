@@ -84,7 +84,7 @@ export default function App() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', maxWidth: '400px', margin: '0 auto' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', width: '100%' }}>
       {/* Header */}
       <div className="game-header">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>

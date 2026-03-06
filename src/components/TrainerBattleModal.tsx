@@ -274,7 +274,6 @@ export function TrainerBattleModal({
       background: 'rgba(0,0,0,0.92)',
       display: 'flex', flexDirection: 'column',
       fontFamily: "'Press Start 2P', monospace",
-      maxWidth: '400px', margin: '0 auto',
     }}>
       {/* Header */}
       <div style={{

@@ -115,7 +115,6 @@ export function StarterScreen({ onChoose }: StarterScreenProps) {
         gap: '10px',
         marginBottom: '20px',
         width: '100%',
-        maxWidth: '380px',
         justifyContent: 'center',
       }}>
         {STARTERS.map(starter => {
@@ -210,8 +209,7 @@ export function StarterScreen({ onChoose }: StarterScreenProps) {
         style={{
           fontSize: '11px',
           padding: '12px 20px',
-          width: '100%',
-          maxWidth: '280px',
+          width: '90%',
           letterSpacing: '1px',
           opacity: selectedId === null ? 0.5 : 1,
         }}

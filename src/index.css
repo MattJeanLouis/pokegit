@@ -28,18 +28,14 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #3a3a3a;
+  background-color: #0f0f1e;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 #root {
   width: 100%;
-  max-width: 400px;
   min-height: 100vh;
-  background-color: var(--panel);
+  background-color: #0f0f1e;
   display: flex;
   flex-direction: column;
 }

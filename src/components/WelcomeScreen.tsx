@@ -77,8 +77,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
           background: 'rgba(232,240,200,0.95)',
           padding: '16px',
           marginBottom: '24px',
-          maxWidth: '320px',
-          width: '100%',
+          width: '92%',
         }}
       >
         <div style={{
@@ -110,8 +109,7 @@ export function WelcomeScreen({ onStart }: WelcomeScreenProps) {
           fontSize: '11px',
           padding: '12px 20px',
           marginBottom: '16px',
-          width: '100%',
-          maxWidth: '280px',
+          width: '90%',
           letterSpacing: '1px',
         }}
       >
