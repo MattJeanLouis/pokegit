@@ -118,53 +118,64 @@ export default function App() {
         )}
 
         {activeTab === 'team' && (
-          <TeamView
-            team={state.team}
-            pc={state.pc}
-            onSendToPC={sendToPC}
-          />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f1e', minHeight: '100%' }}>
+            <TeamView
+              team={state.team}
+              pc={state.pc}
+              onSendToPC={sendToPC}
+            />
+          </div>
         )}
 
         {activeTab === 'shop' && (
-          <ShopView
-            pokeDollars={player.pokeDollars}
-            pokeballs={player.pokeballs}
-            greatBalls={player.greatBalls}
-            potions={player.potions}
-            superPotions={player.superPotions}
-            hyperPotions={player.hyperPotions}
-            team={state.team}
-            onBuy={buyItem}
-            onUsePotion={usePotion}
-          />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f1e', minHeight: '100%' }}>
+            <ShopView
+              pokeDollars={player.pokeDollars}
+              pokeballs={player.pokeballs}
+              greatBalls={player.greatBalls}
+              potions={player.potions}
+              superPotions={player.superPotions}
+              hyperPotions={player.hyperPotions}
+              team={state.team}
+              onBuy={buyItem}
+              onUsePotion={usePotion}
+            />
+          </div>
         )}
 
         {activeTab === 'centre' && (
-          <PokemonCenter
-            team={state.team}
-            lastHealTime={state.lastHealTime}
-            onHeal={healTeam}
-          />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f1e', minHeight: '100%' }}>
+            <PokemonCenter
+              team={state.team}
+              lastHealTime={state.lastHealTime}
+              onHeal={healTeam}
+            />
+          </div>
         )}
 
         {activeTab === 'zones' && (
-          <ZoneSelector
-            currentZone={currentZone}
-            repoCount={player.repoCount}
-            badges={state.badges}
-            onChangeZone={changeZone}
-          />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f1e', minHeight: '100%' }}>
+            <ZoneSelector
+              currentZone={currentZone}
+              repoCount={player.repoCount}
+              badges={state.badges}
+              onChangeZone={changeZone}
+            />
+          </div>
         )}
 
         {activeTab === 'pokedex' && (
-          <PokedexView
-            team={state.team}
-            pc={state.pc}
-            seenPokemonIds={state.seenPokemonIds}
-          />
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
+            <PokedexView
+              team={state.team}
+              pc={state.pc}
+              seenPokemonIds={state.seenPokemonIds}
+            />
+          </div>
         )}
 
         {activeTab === 'ligue' && (
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', background: '#0f0f1e', minHeight: '100%' }}>
           <LeagueView
             badges={state.badges}
             eliteFourDefeated={state.eliteFourDefeated}
@@ -189,6 +200,7 @@ export default function App() {
               dispatch({ type: 'TRAINER_BATTLE_LOST', opponentName, opponentElo })
             }}
           />
+          </div>
         )}
       </div>
 
