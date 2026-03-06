@@ -24,27 +24,27 @@ export const STATUS_MOVES = new Set([
   'Tail Glow', 'Shift Gear', 'Quiver Dance',
 ])
 
-// Returns type emoji + flash color for a move name
-export function getMoveInfo(moveName: string): { emoji: string; color: string } {
+// Returns type emoji + flash color + moveType for a move name
+export function getMoveInfo(moveName: string): { emoji: string; color: string; moveType: string } {
   const n = moveName.toLowerCase()
-  if (/fire|flame|burn|ember|blaze|heat|inferno|overheat/.test(n)) return { emoji: '🔥', color: '#ff6030bb' }
-  if (/water|surf|splash|bubble|hydro|waterfall|aqua|wave|rain/.test(n)) return { emoji: '💧', color: '#3090ffbb' }
-  if (/thunder|lightning|electric|spark|bolt|shock|volt|zap|charge/.test(n)) return { emoji: '⚡', color: '#ffdd00bb' }
-  if (/leaf|grass|vine|seed|solar|petal|razor|absorb|drain|giga/.test(n)) return { emoji: '🌿', color: '#40c070bb' }
-  if (/ice|blizzard|freeze|frost|snow|hail|cold|aurora/.test(n)) return { emoji: '❄️', color: '#80d0ffbb' }
-  if (/psychic|psych|mind|psy|confusion|zen|extrasensory/.test(n)) return { emoji: '🔮', color: '#e040a0bb' }
-  if (/ghost|shadow|spirit|curse|hex/.test(n)) return { emoji: '👻', color: '#8040c0bb' }
-  if (/rock|stone|boulder|ancient|power|edge/.test(n)) return { emoji: '🪨', color: '#c0a040bb' }
-  if (/poison|toxic|sludge|venom|acid/.test(n)) return { emoji: '☠️', color: '#a040d0bb' }
-  if (/dark|crunch|bite|night|foul|knock|pursuit/.test(n)) return { emoji: '🌑', color: '#303060bb' }
-  if (/fight|karate|kick|punch|slam|force|close|counter|drain/.test(n)) return { emoji: '🥊', color: '#c03030bb' }
-  if (/fly|wing|aerial|air|gust|feather|hurricane|drill/.test(n)) return { emoji: '🌪️', color: '#80c0e0bb' }
-  if (/dragon|draco|outrage|twister|claw/.test(n)) return { emoji: '🐉', color: '#8040ffbb' }
-  if (/steel|iron|metal|gear|bullet|flash|cannon/.test(n)) return { emoji: '⚙️', color: '#8080a0bb' }
-  if (/ground|earth|quake|dig|fissure|magnitude|mud/.test(n)) return { emoji: '🌍', color: '#c09050bb' }
-  if (/bug|string|signal|attack|x-scissor/.test(n)) return { emoji: '🐛', color: '#90a000bb' }
-  if (/normal|tackle|scratch|quick|hyper|body|slam|swift/.test(n)) return { emoji: '⚪', color: '#aaaaaa88' }
-  return { emoji: '💥', color: '#ffffff66' }
+  if (/fire|flame|burn|ember|blaze|heat|inferno|overheat/.test(n)) return { emoji: '🔥', color: '#ff6030bb', moveType: 'fire' }
+  if (/water|surf|splash|bubble|hydro|waterfall|aqua|wave|rain/.test(n)) return { emoji: '💧', color: '#3090ffbb', moveType: 'water' }
+  if (/thunder|lightning|electric|spark|bolt|shock|volt|zap|charge/.test(n)) return { emoji: '⚡', color: '#ffdd00bb', moveType: 'electric' }
+  if (/leaf|grass|vine|seed|solar|petal|razor|absorb|drain|giga/.test(n)) return { emoji: '🌿', color: '#40c070bb', moveType: 'grass' }
+  if (/ice|blizzard|freeze|frost|snow|hail|cold|aurora/.test(n)) return { emoji: '❄️', color: '#80d0ffbb', moveType: 'ice' }
+  if (/psychic|psych|mind|psy|confusion|zen|extrasensory/.test(n)) return { emoji: '🔮', color: '#e040a0bb', moveType: 'psychic' }
+  if (/ghost|shadow|spirit|curse|hex/.test(n)) return { emoji: '👻', color: '#8040c0bb', moveType: 'ghost' }
+  if (/rock|stone|boulder|ancient|power|edge/.test(n)) return { emoji: '🪨', color: '#c0a040bb', moveType: 'rock' }
+  if (/poison|toxic|sludge|venom|acid/.test(n)) return { emoji: '☠️', color: '#a040d0bb', moveType: 'poison' }
+  if (/dark|crunch|bite|night|foul|knock|pursuit/.test(n)) return { emoji: '🌑', color: '#303060bb', moveType: 'dark' }
+  if (/fight|karate|kick|punch|slam|force|close|counter|drain/.test(n)) return { emoji: '🥊', color: '#c03030bb', moveType: 'fight' }
+  if (/fly|wing|aerial|air|gust|feather|hurricane|drill/.test(n)) return { emoji: '🌪️', color: '#80c0e0bb', moveType: 'flying' }
+  if (/dragon|draco|outrage|twister|claw/.test(n)) return { emoji: '🐉', color: '#8040ffbb', moveType: 'dragon' }
+  if (/steel|iron|metal|gear|bullet|flash|cannon/.test(n)) return { emoji: '⚙️', color: '#8080a0bb', moveType: 'steel' }
+  if (/ground|earth|quake|dig|fissure|magnitude|mud/.test(n)) return { emoji: '🌍', color: '#c09050bb', moveType: 'ground' }
+  if (/bug|string|signal|attack|x-scissor/.test(n)) return { emoji: '🐛', color: '#90a000bb', moveType: 'bug' }
+  if (/normal|tackle|scratch|quick|hyper|body|slam|swift/.test(n)) return { emoji: '⚪', color: '#aaaaaa88', moveType: 'normal' }
+  return { emoji: '💥', color: '#ffffff66', moveType: 'normal' }
 }
 
 // Zone definitions (noms en français) — 6 zones

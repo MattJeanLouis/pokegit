@@ -10,10 +10,11 @@ import { WelcomeScreen } from './components/WelcomeScreen'
 import { StarterScreen } from './components/StarterScreen'
 import { PokemonCenter } from './components/PokemonCenter'
 import { LeagueView } from './components/LeagueView'
+import { PokedexView } from './components/PokedexView'
 import { ZONE_INFO, getMoveInfo } from './gameLogic'
 import type { OwnedPokemon } from './types'
 
-type Tab = 'battle' | 'team' | 'shop' | 'centre' | 'zones' | 'ligue'
+type Tab = 'battle' | 'team' | 'shop' | 'centre' | 'zones' | 'ligue' | 'pokedex'
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<Tab>('battle')
@@ -35,14 +36,14 @@ export default function App() {
     switchPokemon,
   } = useGameState()
 
-  const [attackFlash, setAttackFlash] = useState<{ color: string; emoji: string } | null>(null)
+  const [attackFlash, setAttackFlash] = useState<{ color: string; emoji: string; moveType: string } | null>(null)
   const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleFightWithMove = useCallback((moveName: string) => {
-    const { color, emoji } = getMoveInfo(moveName)
-    setAttackFlash({ color, emoji })
+    const { color, emoji, moveType } = getMoveInfo(moveName)
+    setAttackFlash({ color, emoji, moveType })
     if (flashTimer.current) clearTimeout(flashTimer.current)
-    flashTimer.current = setTimeout(() => setAttackFlash(null), 450)
+    flashTimer.current = setTimeout(() => setAttackFlash(null), 600)
     fightWithMove(moveName)
   }, [fightWithMove])
 
@@ -65,7 +66,8 @@ export default function App() {
   const tabs: { id: Tab; label: string; icon: string; badge?: boolean }[] = [
     { id: 'battle', label: 'COMBAT', icon: '⚔' },
     { id: 'team', label: 'ÉQUIPE', icon: '👾', badge: isTeamFull },
-    { id: 'shop', label: 'BOUTIQUE', icon: '🛒' },
+    { id: 'pokedex', label: 'DEX', icon: '📖' },
+    { id: 'shop', label: 'SHOP', icon: '🛒' },
     { id: 'centre', label: 'CENTRE', icon: '➕' },
     { id: 'zones', label: 'ZONES', icon: '🗺' },
     { id: 'ligue', label: 'LIGUE', icon: '🏆', badge: state.badges.filter(Boolean).length === 8 && !state.championDefeated },
@@ -151,6 +153,14 @@ export default function App() {
             repoCount={player.repoCount}
             badges={state.badges}
             onChangeZone={changeZone}
+          />
+        )}
+
+        {activeTab === 'pokedex' && (
+          <PokedexView
+            team={state.team}
+            pc={state.pc}
+            seenPokemonIds={state.seenPokemonIds}
           />
         )}
 

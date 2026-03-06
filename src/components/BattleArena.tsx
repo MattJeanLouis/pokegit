@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import type { GameState } from '../types'
 import { ZONE_INFO, getAnimatedSpriteUrl } from '../gameLogic'
+import { AttackAnimation } from './AttackAnimation'
 
 interface BattleArenaProps {
   state: GameState
-  attackFlash?: { color: string; emoji: string } | null
+  attackFlash?: { color: string; emoji: string; moveType: string } | null
 }
 
 function HpBar({ hp, maxHp, small }: { hp: number; maxHp: number; small?: boolean }) {
@@ -119,18 +120,13 @@ export function BattleArena({ state, attackFlash }: BattleArenaProps) {
       position: 'relative', height: '220px', overflow: 'hidden',
       background: zoneBg[currentZone] ?? zoneBg[1],
     }}>
-      {/* Attack flash overlay */}
+      {/* Attack animation overlay */}
       {attackFlash && (
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 10,
-          background: attackFlash.color,
-          animation: 'battleFlash 0.4s ease-out forwards',
-          pointerEvents: 'none',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '36px',
-        }}>
-          {attackFlash.emoji}
-        </div>
+        <AttackAnimation
+          moveType={attackFlash.moveType}
+          emoji={attackFlash.emoji}
+          color={attackFlash.color}
+        />
       )}
 
       {/* Ground */}

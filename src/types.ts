@@ -84,6 +84,8 @@ export interface GameState {
   championDefeated: boolean
   playerElo: number
   eloHistory: EloHistoryEntry[]
+  // Pokédex
+  seenPokemonIds: number[]
 }
 
 export interface ZoneInfo {
@@ -107,6 +109,7 @@ export interface GitHubData {
 
 export type GameAction =
   | { type: 'ENCOUNTER'; pokemon: WildPokemon }
+  | { type: 'SEE_POKEMON'; id: number }
   | { type: 'FIGHT'; moveName?: string }
   | { type: 'THROW_BALL'; ballType: BallType }
   | { type: 'RUN' }

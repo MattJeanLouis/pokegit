@@ -49,6 +49,7 @@ const INITIAL_STATE: GameState = {
   championDefeated: false,
   playerElo: 1000,
   eloHistory: [],
+  seenPokemonIds: [],
 }
 
 function addLog(log: string[], message: string): string[] {
@@ -58,6 +59,10 @@ function addLog(log: string[], message: string): string[] {
 
 function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
+    case 'SEE_POKEMON':
+      if (state.seenPokemonIds.includes(action.id)) return state
+      return { ...state, seenPokemonIds: [...state.seenPokemonIds, action.id] }
+
     case 'ENCOUNTER':
       return {
         ...state,
@@ -65,6 +70,9 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         battleState: 'encounter',
         idleTimer: 30,
         isLoading: false,
+        seenPokemonIds: state.seenPokemonIds.includes(action.pokemon.id)
+          ? state.seenPokemonIds
+          : [...state.seenPokemonIds, action.pokemon.id],
         log: addLog(state.log, `Un ${action.pokemon.name.toUpperCase()} sauvage apparaît ! (Nv.${action.pokemon.level})`),
       }
 
