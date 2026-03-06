@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --grass: #78c850;
+  --dark-grass: #588040;
+  --water: #6890f0;
+  --sky: #98d8d8;
+  --sand: #f0c8a0;
+  --bark: #a05040;
+  --panel: #e8f0c8;
+  --panel-dark: #9098c0;
+  --text-dark: #1a1a2e;
+  --hp-green: #00c000;
+  --hp-yellow: #f0c000;
+  --hp-red: #e83030;
+  --white: #f8f8f8;
+  --black: #181018;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #3a3a3a;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#root {
+  width: 100%;
+  max-width: 400px;
+  min-height: 100vh;
+  background-color: var(--panel);
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: 'Press Start 2P', monospace;
+  color: var(--text-dark);
+}
+
+img {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* HP Bar */
+.hp-bar-container {
+  width: 100%;
+  height: 8px;
+  background-color: #333;
+  border: 2px solid var(--text-dark);
+}
+
+.hp-bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.hp-bar.green {
+  background-color: var(--hp-green);
+}
+
+.hp-bar.yellow {
+  background-color: var(--hp-yellow);
+}
+
+.hp-bar.red {
+  background-color: var(--hp-red);
+}
+
+/* GBA Button styles */
+.gba-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  background-color: var(--text-dark);
+  color: var(--white);
+  border: 3px solid #000;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  transition: background-color 0.1s;
+  box-shadow: 3px 3px 0px #000;
+  user-select: none;
+}
+
+.gba-btn:active {
+  box-shadow: 0px 0px 0px #000;
+  transform: translate(3px, 3px);
+}
+
+.gba-btn:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  box-shadow: 1px 1px 0px #000;
+}
+
+.gba-btn.red-btn {
+  background-color: #c03030;
+}
+
+.gba-btn.blue-btn {
+  background-color: #3050a0;
+}
+
+.gba-btn.green-btn {
+  background-color: #207020;
+}
+
+/* Battle arena */
+.battle-arena {
+  background: linear-gradient(to bottom, var(--sky) 0%, var(--sky) 40%, var(--grass) 40%, var(--grass) 60%, var(--sand) 60%);
+  position: relative;
+  overflow: hidden;
+}
+
+.battle-zone-1 {
+  background: linear-gradient(to bottom, #98d8d8 0%, #98d8d8 40%, #78c850 40%, #78c850 60%, #f0c8a0 60%);
+}
+
+.battle-zone-2 {
+  background: linear-gradient(to bottom, #888898 0%, #888898 40%, #607060 40%, #607060 60%, #a09080 60%);
+}
+
+.battle-zone-3 {
+  background: linear-gradient(to bottom, #1a1a3e 0%, #1a1a3e 40%, #304070 40%, #304070 60%, #605080 60%);
+}
+
+/* New zones */
+.battle-zone-4 { background: linear-gradient(to bottom, #0a1a0a 0%, #1a2a1a 50%, #2a3a2a 100%); }
+.battle-zone-5 { background: linear-gradient(to bottom, #1a0a2a 0%, #2a1040 50%, #3a2050 100%); }
+.battle-zone-6 { background: linear-gradient(to bottom, #000010 0%, #001030 50%, #002050 100%); }
+
+/* Attack flash animation */
+@keyframes battleFlash {
+  0% { opacity: 0.9; }
+  40% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+/* Bounce animation for idle pokemon */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.pokemon-idle {
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+/* Panel styling */
+.gba-panel {
+  background-color: var(--panel);
+  border: 3px solid var(--text-dark);
+}
+
+.gba-panel-dark {
+  background-color: var(--panel-dark);
+  border: 3px solid var(--text-dark);
+}
+
+/* Battle log text */
+.battle-log {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  line-height: 1.8;
+  color: var(--text-dark);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-dark);
+}
+
+/* Pokemon card in team */
+.pokemon-card {
+  background-color: var(--panel);
+  border: 3px solid var(--text-dark);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.pokemon-card:active {
+  transform: scale(0.95);
+}
+
+.pokemon-card.empty {
+  background-color: #ccc;
+  border: 3px dashed #888;
+}
+
+/* Tab navigation */
+.tab-bar {
+  background-color: var(--text-dark);
+  border-top: 3px solid #000;
+}
+
+.tab-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #aaa;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 4px;
+  text-align: center;
+  flex: 1;
+  outline: none;
+  transition: color 0.1s;
+}
+
+.tab-btn.active {
+  color: var(--white);
+  border-top: 3px solid #ffcc00;
+  margin-top: -3px;
+}
+
+/* Header */
+.game-header {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: 8px 12px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #000;
+}
+
+/* Idle timer bar */
+.timer-bar {
+  height: 4px;
+  background-color: #ffcc00;
+  transition: width 1s linear;
+}
+
+/* Typewriter cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: '▋';
+  animation: blink 1s infinite;
+}
+
+/* Zone card */
+.zone-card {
+  border: 3px solid var(--text-dark);
+  padding: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.zone-card:active {
+  transform: scale(0.98);
+}
+
+.zone-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+
+.zone-card.active-zone {
+  border-color: #ffcc00;
+  background-color: #fffce0;
+}
