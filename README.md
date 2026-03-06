@@ -1,101 +1,127 @@
 # PokéGit 🎮
 
-> A GBA FireRed-style Pokémon idle game powered by your real GitHub activity.
+> *Un jeu Pokémon idle dans l'esprit GBA FireRed — exploration, captures, arènes et ligue.*
 
-[![React](https://img.shields.io/badge/React-18-blue?logo=react)](https://react.dev)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-6-purple?logo=vite)](https://vite.dev)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-cyan?logo=tailwindcss)](https://tailwindcss.com)
-
----
-
-## What is PokéGit?
-
-PokéGit turns your GitHub activity into a full Pokémon adventure. Your commits, repositories, stars, and pull requests become the fuel that powers your journey. Choose a starter, explore zones, battle wild Pokémon, earn badges, and climb the league — all driven by how active you are as a developer.
-
-The more you code, the stronger your team becomes.
+![Salamèche](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif)
+![Pikachu](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/25.gif)
+![Abra](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/63.gif)
 
 ---
 
-## Features
+## 🕹️ Présentation
 
-- **Wild Encounters** — Random Pokémon appear based on your GitHub activity level. More commits = rarer spawns.
-- **XP + Leveling System** — Your Pokémon gain experience points tied to real development metrics.
-- **Evolutions** — Hit milestones (stars, PRs merged, streak days) to trigger evolutions with full animations.
-- **Badge System** — Earn Gym Badges by completing coding challenges: push streaks, repo goals, contribution targets.
-- **Pokémon League with ELO** — Compete in a ranked league against other developers. Your ELO score reflects your GitHub consistency.
-- **Pokémon Center** — Heal your team between sessions. Recovery time scales with how long since your last commit.
-- **Starter Choice** — Pick your starter Pokémon on first login: Bulbasaur, Charmander, or Squirtle.
-- **6 Exploration Zones** — Each zone unlocks at different activity thresholds and features different Pokémon types.
-- **Real PokéAPI Moves** — All moves pulled live from [PokéAPI](https://pokeapi.co) with accurate stats and types.
-- **Animated Gen 5 Sprites** — Full animated sprites from the Black/White era for battles and the Pokédex.
+PokéGit est un jeu Pokémon jouable dans le navigateur, avec une esthétique fidèle à la GBA FireRed. Explore des zones progressives, capture des Pokémon sauvages, monte en niveau, fais évoluer ton équipe, bats les 8 champions d'arène et affronte la Ligue Pokémon.
 
 ---
 
-## How It Works
+## ✨ Fonctionnalités actuelles
 
-When you connect your GitHub account, PokéGit reads your public activity to generate your starting resources:
+### ⚔️ Système de combat
+- **Grille 2×2 de vraies attaques** — choisir ta technique à chaque tour
+- **17 types** reconnus avec couleurs et emojis dédiés
+- **Animations d'attaque par type** — particules CSS uniques (feu qui monte, eau en arc, électrik en zigzag, glace en étoile, psy en spirale...)
+- **L'ennemi n'utilise que des attaques offensives** (les coups de statut sont filtrés)
+- **Sprites animés Gen 5** depuis le CDN PokeAPI (Black & White animated GIFs)
+- **Terrain GBA authentique** — plateformes ovales, horizon net, couleurs par zone
+- **Barres HP style FireRed** — boîte crème, label HP coloré, reflet blanc
+- **Boîte de message style GBA** — effet machine à écrire, flèche ▼ clignotante
 
-| GitHub Metric | In-Game Resource |
-|---|---|
-| Total commits (30 days) | Starting Poké Balls & potions |
-| Public repositories | Starting gold / currency |
-| Stars received | Rare item drops |
-| Pull requests merged | Bonus XP multiplier |
-| Contribution streak | Daily login bonus |
+### 🌿 Exploration & zones
+- **6 zones progressives** avec tables d'apparition dédiées
+- **Pokémon pondérés par rareté** — les communs apparaissent souvent, les rares vraiment peu
+- **Dresseur animé en idle** — le Pokémon de tête se promène en attendant un combat
+- **Timer de 30 secondes** entre chaque apparition
 
-Your activity is checked periodically to reward continued development. Idle progress accumulates while you code.
+| Zone | Pokémon | Niveau | Communs | Rares |
+|------|---------|--------|---------|-------|
+| 🌿 Route 1 | Gen 1 (1-50) | 2-12 | Rattata, Pidgey | Pikachu, Rondoudou |
+| 🌋 Mt. Code | Gen 1 (51-151) | 8-22 | Racaillou, Nosferapti | Abra, Ronflex |
+| 🏔️ Route Victoire | Gen 2 (152-251) | 15-32 | Fouinette, Hoothoot | Scarhino, Embrylex |
+| 🌲 Forêt Obscure | Gen 3 (252-386) | 25-42 | Zigzaton, Tarsal | Draby, Terhal |
+| 🌋 Île Écarlate | Gen 4 (387-493) | 35-52 | Étourmi, Lixy | Riolu, Motisma |
+| 🌌 Sanctuaire | Gen 5 (494-649) | 45-65 | Ratentif, Ponchiot | **Reshiram & Zekrom** |
+
+### 👾 Équipe & Pokédex
+- Équipe de **6 Pokémon** maximum + stockage PC illimité
+- **Évolutions automatiques** au niveau requis (ex: Salamèche → Reptincel Lv16)
+- **Gain d'XP** à chaque K.O. ennemi, level-up en combat
+- **📖 Pokédex complet** : stats de base PokéAPI, types, taille/poids, talents, description
+- **Pokémon vus** (rencontrés mais pas capturés) affichés en silhouette
+
+### 🏆 Ligue Pokémon & ELO
+- **8 Champions d'arène** à battre en ordre (Insecte → Feu)
+- **Élite Quatre** (Glace, Combat, Spectre, Dragon) — déblocage après les 8 badges
+- **Le Champion** — Blue avec Ronflex et Dracaufeu
+- Système **ELO style échecs** — `K × (résultat - 1/(1 + 10^(ΔElo/400)))`
+- **7 tiers** : Novice → Légende (1000 ELO au départ)
+- Historique des 20 derniers combats
+
+| # | Champion | Type | ELO |
+|---|----------|------|-----|
+| 1 | Argenta | Insecte 🐛 | 800 |
+| 2 | Pierre | Roche 🪨 | 900 |
+| 3 | Ondine | Eau 💧 | 1 000 |
+| 4 | Surge | Électrik ⚡ | 1 050 |
+| 5 | Marguerite | Plante 🌿 | 1 100 |
+| 6 | Erika | Poison ☠️ | 1 150 |
+| 7 | Sabrina | Psy 🔮 | 1 200 |
+| 8 | Agatha | Feu 🔥 | 1 350 |
+
+### 💊 Objets & économie
+- Pokéballs, Super Balls — pour capturer les Pokémon sauvages
+- Potions, Super Potions, Hyper Potions
+- **PokéDollars** gagnés en battant des Pokémon et des dresseurs
+- **Centre Pokémon** gratuit (cooldown)
+- **Boutique** in-game
 
 ---
 
-## Tech Stack
+## 🛠️ Stack technique
 
-| Layer | Technology |
-|---|---|
-| Frontend | React 18 + TypeScript + Vite |
-| Styling | Tailwind CSS |
-| Pokémon Data | [PokéAPI](https://pokeapi.co) |
-| GitHub Data | GitHub REST API (OAuth) |
-| Deployment | Cloudflare Tunnels |
-
----
-
-## Screenshots
-
-*Coming soon — game is in active development.*
+| Tech | Usage |
+|------|-------|
+| **React 19** | Interface utilisateur |
+| **TypeScript** | Typage strict |
+| **Vite** | Bundler |
+| **Tailwind CSS** | Styles utilitaires |
+| **PokeAPI** | Données & sprites Pokémon |
+| **Press Start 2P** | Police GBA |
 
 ---
 
-## Getting Started
+## 🚀 Installation locale
 
 ```bash
-# Clone the repo
 git clone https://github.com/MattJeanLouis/pokegit.git
 cd pokegit
-
-# Install dependencies
 npm install
-
-# Start the dev server
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) and connect your GitHub account to begin your adventure.
+---
+
+## 🗺️ Déblocage des zones
+
+| Zone | Dépôts requis | Badges requis |
+|------|---------------|---------------|
+| 🌿 Route 1 | 0 | 0 |
+| 🌋 Mt. Code | 3 | 0 |
+| 🏔️ Route Victoire | 5 | 0 |
+| 🌲 Forêt Obscure | 8 | 2 |
+| 🌋 Île Écarlate | 12 | 4 |
+| 🌌 Sanctuaire | 20 | 8 |
 
 ---
 
-## Roadmap
+## 🔮 Roadmap
 
-- [ ] Multiplayer battles between developers
-- [ ] Guild / team system for organizations
-- [ ] Shiny variants tied to rare GitHub achievements
-- [ ] Move tutors unlocked by open-source contributions
-- [ ] Seasonal events matching real GitHub events (Hacktoberfest, etc.)
+- [ ] Connexion GitHub réelle (OAuth) — stats de commits comme bonus in-game
+- [ ] Pokémon shinys (chances ultra-rares)
+- [ ] Sauvegarde de progression (localStorage)
+- [ ] Évolutions Gen 2-5
+- [ ] Combat multi-joueurs entre développeurs
+- [ ] Événements saisonniers (Hacktoberfest...)
 
 ---
 
-## Made By
-
-Built with love by [@MattJeanLouis](https://github.com/MattJeanLouis).
-
-Powered by [PokéAPI](https://pokeapi.co) — no commercial affiliation with Nintendo or The Pokémon Company.
+*Fait par [@MattJeanLouis](https://github.com/MattJeanLouis) — propulsé par [PokéAPI](https://pokeapi.co)*
