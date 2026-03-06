@@ -14,46 +14,46 @@ PokéGit est un jeu Pokémon jouable dans le navigateur, avec une esthétique fi
 
 ---
 
-## ✨ Fonctionnalités actuelles
+## ✨ Fonctionnalités
 
 ### ⚔️ Système de combat
-- **Grille 2×2 de vraies attaques** — choisir ta technique à chaque tour
+- **Grille 2×2 de vraies attaques** — tu choisis ta technique à chaque tour
 - **17 types** reconnus avec couleurs et emojis dédiés
 - **Animations d'attaque par type** — particules CSS uniques (feu qui monte, eau en arc, électrik en zigzag, glace en étoile, psy en spirale...)
-- **L'ennemi n'utilise que des attaques offensives** (les coups de statut sont filtrés)
-- **Sprites animés Gen 5** depuis le CDN PokeAPI (Black & White animated GIFs)
-- **Terrain GBA authentique** — plateformes ovales, horizon net, couleurs par zone
-- **Barres HP style FireRed** — boîte crème, label HP coloré, reflet blanc
+- **L'ennemi n'utilise que des attaques offensives** — les coups de statut sont filtrés
+- **Sprites animés Gen 5** depuis le CDN PokéAPI (GIF Black & White)
+- **Terrain GBA authentique** — plateformes ovales, horizon net, couleurs adaptées par zone
+- **Barres de vie style FireRed** — boîte crème, label HP coloré, reflet blanc
 - **Boîte de message style GBA** — effet machine à écrire, flèche ▼ clignotante
 
 ### 🌿 Exploration & zones
 - **6 zones progressives** avec tables d'apparition dédiées
-- **Pokémon pondérés par rareté** — les communs apparaissent souvent, les rares vraiment peu
-- **Dresseur animé en idle** — le Pokémon de tête se promène en attendant un combat
-- **Timer de 30 secondes** entre chaque apparition
+- **Pokémon pondérés par rareté** — les communs apparaissent souvent, les rares très peu
+- **Pokémon animé en idle** — le Pokémon de tête se promène en attendant un combat
+- **Timer de 30 secondes** entre chaque apparition sauvage
 
 | Zone | Pokémon | Niveau | Communs | Rares |
 |------|---------|--------|---------|-------|
-| 🌿 Route 1 | Gen 1 (1-50) | 2-12 | Rattata, Pidgey | Pikachu, Rondoudou |
-| 🌋 Mt. Code | Gen 1 (51-151) | 8-22 | Racaillou, Nosferapti | Abra, Ronflex |
-| 🏔️ Route Victoire | Gen 2 (152-251) | 15-32 | Fouinette, Hoothoot | Scarhino, Embrylex |
-| 🌲 Forêt Obscure | Gen 3 (252-386) | 25-42 | Zigzaton, Tarsal | Draby, Terhal |
-| 🌋 Île Écarlate | Gen 4 (387-493) | 35-52 | Étourmi, Lixy | Riolu, Motisma |
-| 🌌 Sanctuaire | Gen 5 (494-649) | 45-65 | Ratentif, Ponchiot | **Reshiram & Zekrom** |
+| 🌿 Route 1 | Gen 1 (1–50) | 2–12 | Rattata, Pidgey | Pikachu, Rondoudou |
+| 🌋 Mt. Code | Gen 1 (51–151) | 8–22 | Racaillou, Nosferapti | Abra, Ronflex |
+| 🏔️ Route Victoire | Gen 2 (152–251) | 15–32 | Fouinette, Hoothoot | Scarhino, Embrylex |
+| 🌲 Forêt Obscure | Gen 3 (252–386) | 25–42 | Zigzaton, Tarsal | Draby, Terhal |
+| 🌋 Île Écarlate | Gen 4 (387–493) | 35–52 | Étourmi, Lixy | Riolu, Motisma |
+| 🌌 Sanctuaire | Gen 5 (494–649) | 45–65 | Ratentif, Ponchiot | **Reshiram & Zekrom** |
 
 ### 👾 Équipe & Pokédex
 - Équipe de **6 Pokémon** maximum + stockage PC illimité
-- **Évolutions automatiques** au niveau requis (ex: Salamèche → Reptincel Lv16)
-- **Gain d'XP** à chaque K.O. ennemi, level-up en combat
-- **📖 Pokédex complet** : stats de base PokéAPI, types, taille/poids, talents, description
+- **Évolutions automatiques** au niveau requis (ex : Salamèche → Reptincel Lv16)
+- **Gain d'XP** à chaque K.O. ennemi, montée de niveau en plein combat
+- **📖 Pokédex complet** — stats de base PokéAPI, types, taille/poids, talents, description
 - **Pokémon vus** (rencontrés mais pas capturés) affichés en silhouette
 
 ### 🏆 Ligue Pokémon & ELO
-- **8 Champions d'arène** à battre en ordre (Insecte → Feu)
-- **Élite Quatre** (Glace, Combat, Spectre, Dragon) — déblocage après les 8 badges
-- **Le Champion** — Blue avec Ronflex et Dracaufeu
-- Système **ELO style échecs** — `K × (résultat - 1/(1 + 10^(ΔElo/400)))`
-- **7 tiers** : Novice → Légende (1000 ELO au départ)
+- **8 Champions d'arène** à battre dans l'ordre (Insecte → Feu)
+- **Élite Quatre** (Glace, Combat, Spectre, Dragon) — accessible après les 8 badges
+- **Le Champion** — Blue avec son Ronflex et son Dracaufeu
+- Système **ELO style échecs** — `K × (résultat − 1 / (1 + 10^(ΔElo/400)))`
+- **7 rangs** : Novice → Légende (départ à 1 000 ELO)
 - Historique des 20 derniers combats
 
 | # | Champion | Type | ELO |
@@ -63,7 +63,7 @@ PokéGit est un jeu Pokémon jouable dans le navigateur, avec une esthétique fi
 | 3 | Ondine | Eau 💧 | 1 000 |
 | 4 | Surge | Électrik ⚡ | 1 050 |
 | 5 | Marguerite | Plante 🌿 | 1 100 |
-| 6 | Erika | Poison ☠️ | 1 150 |
+| 6 | Érika | Poison ☠️ | 1 150 |
 | 7 | Sabrina | Psy 🔮 | 1 200 |
 | 8 | Agatha | Feu 🔥 | 1 350 |
 
@@ -71,21 +71,21 @@ PokéGit est un jeu Pokémon jouable dans le navigateur, avec une esthétique fi
 - Pokéballs, Super Balls — pour capturer les Pokémon sauvages
 - Potions, Super Potions, Hyper Potions
 - **PokéDollars** gagnés en battant des Pokémon et des dresseurs
-- **Centre Pokémon** gratuit (cooldown)
+- **Centre Pokémon** gratuit avec cooldown
 - **Boutique** in-game
 
 ---
 
 ## 🛠️ Stack technique
 
-| Tech | Usage |
-|------|-------|
+| Techno | Usage |
+|--------|-------|
 | **React 19** | Interface utilisateur |
 | **TypeScript** | Typage strict |
 | **Vite** | Bundler |
 | **Tailwind CSS** | Styles utilitaires |
-| **PokeAPI** | Données & sprites Pokémon |
-| **Press Start 2P** | Police GBA |
+| **PokéAPI** | Données & sprites Pokémon |
+| **Press Start 2P** | Police style GBA |
 
 ---
 
@@ -97,6 +97,8 @@ cd pokegit
 npm install
 npm run dev
 ```
+
+Le jeu tourne ensuite sur `http://localhost:5173`.
 
 ---
 
@@ -115,12 +117,12 @@ npm run dev
 
 ## 🔮 Roadmap
 
-- [ ] Connexion GitHub réelle (OAuth) — stats de commits comme bonus in-game
-- [ ] Pokémon shinys (chances ultra-rares)
-- [ ] Sauvegarde de progression (localStorage)
-- [ ] Évolutions Gen 2-5
-- [ ] Combat multi-joueurs entre développeurs
-- [ ] Événements saisonniers (Hacktoberfest...)
+- [ ] Connexion GitHub réelle (OAuth) — commits et dépôts comme bonus in-game
+- [ ] Pokémon shinys (probabilité ultra-rare)
+- [ ] Sauvegarde de la progression (localStorage)
+- [ ] Évolutions Gen 2–5
+- [ ] Combats entre joueurs
+- [ ] Événements saisonniers (Hacktoberfest, etc.)
 
 ---
 
